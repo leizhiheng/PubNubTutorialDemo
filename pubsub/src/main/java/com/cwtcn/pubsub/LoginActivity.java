@@ -37,7 +37,10 @@ import java.util.List;
 import static android.Manifest.permission.READ_CONTACTS;
 
 /**
- * A login screen that offers login via email/password.
+ * 登录页面
+ * 功能：
+ *  1、输入用户名登录，然后存储用户名
+ *
  */
 public class LoginActivity extends AppCompatActivity {
 
@@ -136,6 +139,7 @@ public class LoginActivity extends AppCompatActivity {
         editor.putString(Contants.PREF_KEY_USER_NAME, mEmailView.getText().toString());
         editor.putString(Contants.PREF_KEY_USER_PW, mPasswordView.getText().toString());
         editor.commit();
+        PubNubApplication.sUserName = mPreferences.getString(Contants.PREF_KEY_USER_NAME, "");
     }
 }
 

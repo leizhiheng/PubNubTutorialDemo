@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
@@ -19,11 +18,8 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -158,6 +154,11 @@ public class MainActivity extends AppCompatActivity implements IPNStatus{
         builder.create().show();
     }
 
+    /**
+     * 增加一个channel，并将他存储在数据库中
+     * @param msg
+     * @param dialog
+     */
     private void addChannel(String msg, DialogInterface dialog) {
         if (TextUtils.isEmpty(msg)) {
             Toast.makeText(this, "Channel名称不能为空", Toast.LENGTH_SHORT).show();

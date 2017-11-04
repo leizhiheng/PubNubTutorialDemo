@@ -8,7 +8,6 @@ import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.IBinder;
-import android.widget.Toast;
 
 import com.cwtcn.pubsub.Bean.Channel;
 import com.cwtcn.pubsub.Bean.DaoMaster;
@@ -25,9 +24,16 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
+ * 自定义Application，在AndroidManifest.xml中使用
+ * 功能：
+ * 1、初始化数据库，用户存储和管理Channels
+ * 2、存储用户名和用户uuid，方便别的类引用
+ * 3、绑定PNAdminService服务，这个服务中有一个设置了SecretKey的PubNub对象，专门用于权限管理。
+ *    如果有服务器的话，权限管理应该是在服务器上管理。这个Service用于模拟服务器
+ * 4、在这里可以进行Application/Channel/User三个级别的权限管理
+ *
  * Created by leizhiheng on 2017/10/31.
  */
-
 public class PubNubApplication extends Application {
     private static DaoSession daoSession;
     public static String sUserName;
@@ -37,8 +43,11 @@ public class PubNubApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        //创建数据库
         setupDatabase();
+        //如果数据库中没有数据，则将默认的几个channel存到数据库中
         setDBDataFirstTime();
+        //获取userName,uuid
         SharedPreferences preferences = getSharedPreferences(Contants.PREF_NAME, MODE_PRIVATE);
         sUserName = preferences.getString(Contants.PREF_KEY_USER_NAME, "");
         sUuid = preferences.getString(Contants.PREF_KEY_UUID, "");
@@ -46,6 +55,9 @@ public class PubNubApplication extends Application {
         bindAdminService();
     }
 
+    /**
+     * 创建数据库
+     */
     private void setupDatabase() {
         //创建数据库pubnub.db
         DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "pubnub.db", null);
@@ -68,6 +80,7 @@ public class PubNubApplication extends Application {
             PNAdminService.PNAdminBinder binder = (PNAdminService.PNAdminBinder) service;
             mAdminPubnub = binder.getService().getPubNub();
 
+            //Application 级别的授权
             grantAppLevel(true, true);
             //grantChannelLevel(true, true);
             //grantUserLevel(true, true);

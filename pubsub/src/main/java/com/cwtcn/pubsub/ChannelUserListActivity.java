@@ -34,9 +34,7 @@ import java.util.List;
 
 /**
  * 页面功能：
- * 1、显示用户列表
- * 2、如果当前用户是管理员，则每个用户右侧会显示，“read”和“write”两个授权按钮。如果当前不是管理员则不显示这两个按钮
- * 3、如果当前用户是管理员，点击授权按钮，会进行授权或收回权限。
+ * 1、显示订阅了当前channel的所有用户的用户名、用户id、用户状态
  */
 public class ChannelUserListActivity extends AppCompatActivity implements IPNPrecense, ChannelUserListAdapter.OnGrantClickedlistener{
     public static final String TAG = ChannelUserListActivity.class.getSimpleName();
