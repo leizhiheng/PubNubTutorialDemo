@@ -43,7 +43,7 @@
                 android:layout_marginLeft="2dp"
                 android:background="@android:color/holo_blue_bright"
                 android:text="Send"
-                android:textColor="@android:color/white" />
+                android:textColor="@drawable/sel_button_click" />
         </LinearLayout>
 
         <android.support.v4.widget.SwipeRefreshLayout

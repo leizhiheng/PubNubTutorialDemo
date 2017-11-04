@@ -18,6 +18,7 @@ import com.cwtcn.pubsub.adapter.ChannelUserListAdapter;
 import com.cwtcn.pubsub.interfaces.IPNPrecense;
 import com.cwtcn.pubsub.service.PNService;
 import com.cwtcn.pubsub.util.PLog;
+import com.cwtcn.pubsub.widget.RecycleViewDivider;
 import com.pubnub.api.PubNub;
 import com.pubnub.api.callbacks.PNCallback;
 import com.pubnub.api.models.consumer.PNStatus;
@@ -88,13 +89,7 @@ public class ChannelUserListActivity extends AppCompatActivity implements IPNPre
 
         mRecyclerView = (RecyclerView) findViewById(R.id.list);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {
-            @Override
-            public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-                super.getItemOffsets(outRect, view, parent, state);
-                outRect.set(0, 0, 0, 10);
-            }
-        });
+        mRecyclerView.addItemDecoration(new RecycleViewDivider(this, LinearLayoutManager.HORIZONTAL, R.drawable.shape_item_divider));
         mAdapter = new ChannelUserListAdapter(this);
         mAdapter.setOnGrantClickedlistener(this);
         mRecyclerView.setAdapter(mAdapter);

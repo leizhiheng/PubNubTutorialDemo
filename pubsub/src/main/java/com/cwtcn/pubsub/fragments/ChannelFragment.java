@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,6 +19,7 @@ import com.cwtcn.pubsub.dao.ChannelsDao;
 import com.cwtcn.pubsub.events.DBChangeEvent;
 import com.cwtcn.pubsub.events.SubscribeAllEvent;
 import com.cwtcn.pubsub.util.PLog;
+import com.cwtcn.pubsub.widget.RecycleViewDivider;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -93,12 +95,7 @@ public class ChannelFragment extends Fragment {
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
             mRecyclerView = (RecyclerView) view;
-            mRecyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {
-                @Override
-                public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-                    outRect.set(0,0,0,2);
-                }
-            });
+            mRecyclerView.addItemDecoration(new RecycleViewDivider(getActivity(), LinearLayoutManager.HORIZONTAL, R.drawable.shape_item_divider));
             mAdapter = new ChannelItemAdapter(getActivity(), queryChannels());
             mRecyclerView.setAdapter(mAdapter);
         }
