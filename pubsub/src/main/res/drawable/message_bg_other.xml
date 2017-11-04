@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners android:radius="@dimen/commen_corner_radius"/>
+    <padding android:left="@dimen/message_content_padding"
+        android:bottom="@dimen/message_content_padding"
+        android:right="@dimen/message_content_padding"
+        android:top="@dimen/message_content_padding"/>
+    <solid android:color="@color/color_white"/>
+    <stroke android:color="@android:color/black"
+        android:width="@dimen/commen_line_height"/>
+
+</shape>

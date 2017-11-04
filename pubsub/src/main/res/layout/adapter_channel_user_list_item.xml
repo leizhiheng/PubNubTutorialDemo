@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+    <Button
+        android:id="@+id/read_set"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:text="@string/grant_read_text"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:textSize="14sp"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/button_bg_granted" />
+
+    <Button
+        android:id="@+id/write_set"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_toLeftOf="@id/read_set"
+        android:layout_centerVertical="true"
+        android:padding="@dimen/message_content_padding"
+        android:layout_marginRight="5dp"
+        android:text="@string/grant_write_text"
+        android:textSize="14sp"
+        android:background="@drawable/button_bg_granted" />
+
+    <TextView
+        android:id="@+id/user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:lines="1"
+        android:ellipsize="end"
+        android:layout_toLeftOf="@id/write_set"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"/>
+
+    <TextView
+        android:id="@+id/state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/user_name"/>
+
+
+</RelativeLayout>

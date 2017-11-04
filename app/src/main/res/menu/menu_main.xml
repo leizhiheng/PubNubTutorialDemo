@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/pubsub_mene"
+        android:title="PubSub"
+        app:showAsAction="always"/>
+    <item android:id="@+id/precense_mene"
+        android:title="Precense"
+        app:showAsAction="always"/>
+    <item android:id="@+id/multi_mene"
+        android:title="Multi"
+        app:showAsAction="always"/>
+</menu>
